@@ -1,4 +1,5 @@
 mod day01;
+mod day02;
 
 fn main() {
     let in_str: String = day01::read_input();
