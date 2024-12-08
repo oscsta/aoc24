@@ -54,9 +54,12 @@ pub fn solve_p2(input: &String) {
 
     // Running a filter over right list for every element in left list is slow.
     // There are faster ways. E.g. parallel iteration over both lists or using e.g. HashMap
-    let similarity: u32 = left.iter().map(|n| {
-        let times = right.iter().filter(|&m| m == n).count() as u32;
-        n * times
-    }).sum();
+    let similarity: u32 = left
+        .iter()
+        .map(|n| {
+            let times = right.iter().filter(|&m| m == n).count() as u32;
+            n * times
+        })
+        .sum();
     println!("Part 2 answer: {similarity:?}");
 }
