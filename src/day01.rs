@@ -12,10 +12,10 @@ pub fn read_input() -> String {
     input_str
 }
 
-pub fn solve_p1(input: String) {
-    let in_vals: Vec<&str> = input.split('\n').collect();
+pub fn solve_p1(input: &String) {
+    let in_rows: Vec<&str> = input.split('\n').collect();
 
-    let (left, right): (Vec<u32>, Vec<u32>) = in_vals
+    let (left, right): (Vec<u32>, Vec<u32>) = in_rows
         .into_iter()
         .map(|r| {
             let srow = r.split_whitespace().collect::<Vec<&str>>();
@@ -36,4 +36,26 @@ pub fn solve_p1(input: String) {
         .map(|(l, r)| max(l, r) - min(l, r))
         .sum();
     println!("Part 1 answer: {diff:?}")
+}
+
+pub fn solve_p2(input: &String) {
+    let in_rows: Vec<&str> = input.split('\n').collect();
+
+    let (left, right): (Vec<u32>, Vec<u32>) = in_rows
+        .into_iter()
+        .map(|r| {
+            let srow = r.split_whitespace().collect::<Vec<&str>>();
+            (
+                srow[0].parse::<u32>().unwrap(),
+                srow[1].parse::<u32>().unwrap(),
+            )
+        })
+        .collect();
+
+
+    let similarity: u32 = left.iter().map(|n| {
+        let times = right.iter().filter(|&m| m == n).count() as u32;
+        n * times
+    }).sum();
+    println!("Part 2 answer: {similarity:?}");
 }
