@@ -1,9 +1,10 @@
 mod day01;
 mod day02;
 mod day03;
+mod day04;
 mod input;
 
 fn main() {
-    day03::solve_p1();
-    day03::solve_p2();
+    day04::solve_p1();
+    day04::solve_p2();
 }

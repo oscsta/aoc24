@@ -48,8 +48,10 @@ pub fn solve_p2() {
             continue;
         };
         while let Some(dont_pos) = dont_matches.next() {
-            if dont_pos < pos { continue; }
-//            println!("Matching on {pos}..{dont_pos}");
+            if dont_pos < pos {
+                continue;
+            }
+            //            println!("Matching on {pos}..{dont_pos}");
             let matches_iter = re_mul.find_iter(&input[pos..dont_pos]);
             let result: u32 = matches_iter
                 .map(|m| {
