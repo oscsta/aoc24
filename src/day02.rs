@@ -35,11 +35,9 @@ pub fn solve_p2(input: &String) {
             .map(|lvl| lvl.parse::<i32>().unwrap())
             .collect();
         let diffs = levels.windows(2).map(|pair| pair[1] - pair[0]);
-
-
     }
 }
 
-fn is_diff_safe_dampener(it: &impl Iterator<Item=i32>) -> bool {
+fn is_diff_safe_dampener(it: &impl Iterator<Item = i32>) -> bool {
     true
 }
