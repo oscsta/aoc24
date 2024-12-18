@@ -138,4 +138,39 @@ pub fn solve_p1() {
     println!("Part01: {}", total_matches);
 }
 
-pub fn solve_p2() {}
+pub fn solve_p2() {
+    let input = read(4);
+    let input: Vec<Vec<char>> = input.lines().map(|line| line.chars().collect()).collect();
+    let (n_rows, n_cols) = (input.len(), input.first().unwrap().len());
+    //    println!("DIM {n_rows},{n_cols}");
+    //    println!("{:?}", &input[0]);
+    let mut total_matches = 0 as u32;
+
+    for r in 1..n_rows - 1 {
+        for c in 1..n_cols - 1 {
+            if input[r][c] != 'A' {
+                continue;
+            }
+            if (input[r - 1][c - 1] == 'M'
+                && input[r + 1][c + 1] == 'S'
+                && input[r + 1][c - 1] == 'M'
+                && input[r - 1][c + 1] == 'S')
+                || (input[r - 1][c - 1] == 'S'
+                    && input[r + 1][c + 1] == 'M'
+                    && input[r + 1][c - 1] == 'M'
+                    && input[r - 1][c + 1] == 'S')
+                || (input[r - 1][c - 1] == 'M'
+                    && input[r + 1][c + 1] == 'S'
+                    && input[r + 1][c - 1] == 'S'
+                    && input[r - 1][c + 1] == 'M')
+                || (input[r - 1][c - 1] == 'S'
+                    && input[r + 1][c + 1] == 'M'
+                    && input[r + 1][c - 1] == 'S'
+                    && input[r - 1][c + 1] == 'M')
+            {
+                total_matches += 1
+            }
+        }
+    }
+    println!("Part02: {}", total_matches);
+}
